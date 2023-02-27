@@ -1,0 +1,108 @@
+/* style basket */
+.shoppingBasket {
+    width: 30%;
+    height: 100vh;
+    background-color: white;
+    box-shadow: 0 0 5px rgb(0 0 0 / 40%);
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0px;
+    align-items: center;
+    font-size: 18px;
+    padding: 8px;
+}
+
+/* basket empty */
+.basket_empty_headline {
+    margin-top: 48px;
+    margin-bottom: 40px;
+    /*     text-align: center;
+ */
+}
+
+.basket_icon {
+    margin-bottom: 32px;
+}
+
+.text1_basket_empty {
+    margin-bottom: 8px;
+    font-size: 24px;
+}
+
+.text2_basket_empty {
+    max-width: 350px;
+    text-align: center;
+    font-size: 18px;
+}
+
+/* basket filled */
+
+.basket_filled {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.all_foods_within_basket {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+
+}
+
+.food_within_basket {
+    width: 250px;
+    box-shadow: 0 0 5px rgb(0 0 0 / 40%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8px;
+    margin: 8px;
+}
+
+.amount_food_price {
+    display: flex;
+    justify-content: space-between;
+}
+
+.plus_minius_container {
+    display: flex;
+    justify-content: center;
+    width: 90px;
+    padding: 16px;
+}
+
+.img_plus_minus {
+    width: 15px;
+    padding: 9px;
+    border: 1px solid black;
+    border-radius: 10%;
+    margin: 0 8px;
+    cursor: pointer;
+}
+
+.sum_area {
+    width: 200px;
+    padding: 8px;
+    margin-top: 32px;
+    box-shadow: 0 0 5px rgb(0 0 0 / 40%);
+}
+
+.space_between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.total {
+    border-bottom: double 3px #000000;
+}
+
+/* footer */
+footer {
+    height: 50px;
+    background-color: orange;
+}
