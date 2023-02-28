@@ -5,13 +5,13 @@ let prices = [8.50, 9.50, 9.50, 10.50, 10.50, 9.50];
 let food_images = ['p1', 'p2', 'p3', 'p4', 'p5', 'p6', ];
 
 // basket
-let basket_foods = ['food1', 'food2', 'food3',];
-let basket_prices = ['price1', 'price2', 'price3'];
-let basket_amounts = [1, 2, 3];
+let basket_foods = [];
+let basket_prices = [];
+let basket_amounts = [];
 
 
 //// render functions
-function render_all () {
+function render_all() {
     render_stars(5);
     render_pizzas();
     render_basket();
@@ -33,19 +33,19 @@ function render_pizzas() {
     for (let i = 0; i < foods.length; i++) {
         let food = foods[i];
         let description = descriptions[i];
-        let price_dot = prices[i];
-        let price = price_dot.toFixed(2).replace('.',',');
+        let price = prices[i];
+            formatedPrice = price.toFixed(2).replace('.',',');
         let food_image = food_images[i];
         pizzas.innerHTML += `
         <div>
             <div class="pizza">
-                <p class="food">${food}</p>
-                <p class="description">${description}</p>
+                <p class="food" id="food">${food}</p>
+                <p class="description" id="description">${description}</p>
                 <div class="price_pizza_container">
-                    <p class="price">${price} €</p>
-                    <img class="food_image" src="images/pizza_img/${food_image}.jpg">
+                    <p class="price" id="price">${formatedPrice} €</p>
+                    <img class="food_image" id="food_image"src="images/pizza_img/${food_image}.jpg">
                 </div>
-                <img class="plus_img" src="icons/plus-8-48.png">
+                <img class="plus_img" id="plus_img" src="icons/plus-8-48.png" onclick="add_to_basket(${i})">
             </div>
         </div>
         `;
@@ -58,9 +58,10 @@ function render_basket() {
     if (basket_foods.length == 0) {
         render_basket_empty();
     } else
-        render_basket_filled(basket_foods, basket_prices, basket_amounts);
+        render_basket_filled();
 }
 
+// empty basket
 function render_basket_empty() {
     let basket = document.getElementById('shoppingBasket');
     basket.innerHTML = ``;
@@ -72,7 +73,8 @@ function render_basket_empty() {
     `;
 }
 
-function render_basket_filled(basket_foods, basket_prices, basket_amounts) {
+// filled basked
+function render_basket_filled() {
     let basket = document.getElementById('shoppingBasket');
     basket.innerHTML = ``;
     basket.innerHTML = `
@@ -85,32 +87,69 @@ function render_basket_filled(basket_foods, basket_prices, basket_amounts) {
     for (let i = 0; i < basket_foods.length; i++) {
             let food = basket_foods[i];
             let price = basket_prices[i];
+                formatedPrice = price.toFixed(2).replace('.', ',');
             let amount = basket_amounts[i];
             foods_within_basket = document.getElementById('all_foods_within_basket');
             foods_within_basket.innerHTML += `
             <div class="food_within_basket">
                 <div class="amount_food_price">
-                    <div>${amount} x ${food} </div> <div>${price} </div>
+                    <div>${amount} x ${food} </div> <div>${formatedPrice} €</div>
                 </div>
                 <div class="plus_minius_container">
-                    <img class="img_plus_minus" src="icons/plus-8-48.png">
-                    <img class="img_plus_minus" src="icons/minus-2-48.png">
+                    <img class="img_plus_minus" src="icons/plus-8-48.png" onclick="add_to_basket(${i})">
+                    <img class="img_plus_minus" src="icons/minus-2-48.png" onclick="remove_from_basket(${i})">
                 </div>
             </div>
         `;
     }
+    
+    let sum = 0;
+    for (let i = 0; i < basket_foods.length; i++) {
+        sum += basket_prices[i] * basket_amounts[i];
+        formatedSum = sum.toFixed(2).replace('.', ',');
+        total = sum + 2;
+        formatedTotal = total.toFixed(2).replace('.', ',');
+    } 
+
     basket.innerHTML += `
     <div class="sum_area" id="sum_area">
         <div class="space_between">
-            <span>Zwischensumme</span><span>9,00 €</span>
+            <span>Summe</span><span>${formatedSum} €</span>
         </div>
         <div class="space_between">
             <span>Lieferkosten</span><span>2,00 €</span>
         </div>
         <div class="space_between">
-            <b>Gesamt</b><b class="total">11,00 €</b>
+            <b>Gesamt</b><b class="total">${formatedTotal} €</b>
         </div>
     </div>
     `;
+}
+
+
+function add_to_basket(i) {
+    if (basket_foods.indexOf(foods[i]) == -1) {
+        basket_foods.push(foods[i]);
+        basket_prices.push(prices[i]);
+        basket_amounts.push(1);
+    } else {
+        basket_amounts[i]++;
+    }
+    render_basket_filled();
+}
+
+function remove_from_basket(i) {
+    if (basket_amounts[i] == 1 && basket_foods.length == 1) {
+        render_basket_empty();
+    }
+    else if (basket_amounts[i] == 1) {
+        basket_foods.splice(i, 1);
+        basket_prices.splice(i, 1);
+        basket_amounts.splice(i, 1);
+        render_basket_filled();
+    } else {
+        basket_amounts[i]--;
+        render_basket_filled();
+    }
 }
 
