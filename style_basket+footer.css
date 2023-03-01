@@ -11,6 +11,7 @@
     align-items: center;
     font-size: 18px;
     padding: 8px;
+    margin-bottom: 32px;
 }
 
 /* basket empty */
@@ -28,6 +29,7 @@
 .text1_basket_empty {
     margin-bottom: 8px;
     font-size: 24px;
+    text-align: center;
 }
 
 .text2_basket_empty {
@@ -106,4 +108,36 @@
 footer {
     height: 50px;
     background-color: orange;
+}
+
+@media (max-width: 966px) {
+    .food_within_basket {
+        width: 210px;
+    }
+}
+
+@media (max-width: 800px) {
+    .outerContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .foodContainer {
+        width: 100%;
+    }
+
+    .address {
+        display: none;
+    }
+
+    .shoppingBasket {
+        width: 50%;
+    }
+}
+
+@media (max-width: 500px) {
+    .shoppingBasket {
+        width: 70%;
+    }
 }

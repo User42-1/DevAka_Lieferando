@@ -92,7 +92,6 @@ header {
     margin-right: 16px;
 }
 
-
 .retaurant_lower {
     display: flex;
     margin-bottom: 16px;
@@ -121,6 +120,7 @@ header {
 }
 
 .food {
+    padding-right: 40px;
     font-size: 32px;
     font-weight: bold;
 }

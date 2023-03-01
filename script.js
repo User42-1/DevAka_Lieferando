@@ -1,6 +1,6 @@
 // pizzas
 let foods = ['Pizza Margherita', 'Pizza Fungi', 'Pizza Olive', 'Pizza 4 Käse', 'Pizza Salami', 'Pizza Brokkoli'];
-let descriptions = ['Mit Pizzasauce und echtem Gouda', 'Mit Pizzasauce, frischen Champignons und echtem Gouda', 'mit Pizzasauce, frischen schwarzen Oliven und echtem Gouda', 'Mit Pizzasauce, Fetakäse. Mazzarelle, Cheddar und echtem Gouda', 'Mit Pizzasauce, Salami und Reibegenuss', 'Mit Pizzasauce, Brokkoliröschen und echtem Gouda'];
+let descriptions = ['Mit Pizzasauce und echtem Gouda', 'Mit Pizzasauce, frischen Champignons und echtem Gouda', 'Mit Pizzasauce, frischen schwarzen Oliven und echtem Gouda', 'Mit Pizzasauce, Fetakäse. Mazzarelle, Cheddar und echtem Gouda', 'Mit Pizzasauce, Salami und Reibegenuss', 'Mit Pizzasauce, Brokkoliröschen und echtem Gouda'];
 let prices = [8.50, 9.50, 9.50, 10.50, 10.50, 9.50];
 let food_images = ['p1', 'p2', 'p3', 'p4', 'p5', 'p6', ];
 
