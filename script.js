@@ -94,12 +94,31 @@ function add_to_basket(food) {
         basket_prices.push(prices[index_foods]);
         basket_amounts.push(1);
     } else {
-        basket_amounts[i]++;
+        basket_amounts[index_basket]++;
     }
     render_basket_filled();
 }
 
-function remove_from_basket(i) {
+function remove_from_basket(food) {
+    let index_basket = basket_foods.indexOf(food);
+    if (basket_foods.length == 1 && basket_amounts[index_basket] == 1) {
+        basket_foods = [];
+        basket_prices = [];
+        basket_amounts = [];
+        render_basket_empty();
+    }
+    else if (basket_amounts[index_basket] == 1) {
+        basket_foods.splice(index_basket, 1);
+        basket_prices.splice(index_basket, 1);
+        basket_amounts.splice(index_basket, 1);
+        render_basket_filled();
+    } else {
+        basket_amounts[index_basket]--;
+        render_basket_filled();
+        }
+}
+
+/* function remove_from_basket(food) {
     if (basket_amounts[i] == 1 && basket_foods.length == 1) {
         render_basket_empty();
     }
@@ -112,7 +131,7 @@ function remove_from_basket(i) {
         basket_amounts[i]--;
         render_basket_filled();
     }
-}
+} */
 
 
 //// templates
@@ -149,8 +168,8 @@ function generateHTML_foodWithinBasket(amount,food,formatedPrice,i) {
             <div>${amount} x ${food} </div> <div>${formatedPrice} €</div>
         </div>
         <div class="plus_minius_container">
-            <img class="img_plus_minus" src="icons/plus-8-48.png" onclick="add_to_basket(${i})">
-            <img class="img_plus_minus" src="icons/minus-2-48.png" onclick="remove_from_basket(${i})">
+            <img class="img_plus_minus" src="icons/plus-8-48.png" onclick="add_to_basket('${food}')">
+            <img class="img_plus_minus" src="icons/minus-2-48.png" onclick="remove_from_basket('${food}')">
         </div>
     </div>
 `   ;
