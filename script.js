@@ -86,10 +86,12 @@ function render_basket_filled() {
 }
 
 
-function add_to_basket(i) {
-    if (basket_foods.indexOf(foods[i]) == -1) {
-        basket_foods.push(foods[i]);
-        basket_prices.push(prices[i]);
+function add_to_basket(food) {
+    let index_basket = basket_foods.indexOf(food);
+    let index_foods = foods.indexOf(food);
+    if (index_basket == -1) {
+        basket_foods.push(foods[index_foods]);
+        basket_prices.push(prices[index_foods]);
         basket_amounts.push(1);
     } else {
         basket_amounts[i]++;
@@ -124,7 +126,7 @@ return `
                     <p class="price" id="price">${formatedPrice} €</p>
                     <img class="food_image" id="food_image"src="images/pizza_img/${food_image}.jpg">
                 </div>
-                <img class="plus_img" id="plus_img" src="icons/plus-8-48.png" onclick="add_to_basket(${i})">
+                <img class="plus_img" id="plus_img" src="icons/plus-8-48.png" onclick="add_to_basket('${food}')">
             </div>
         </div>
     `;
