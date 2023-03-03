@@ -10,7 +10,7 @@
     <script src="script.js"></script>
 </head>
 <body onload="render_all()">
-    <header class="header">
+    <header class="header" id="header">
         <div class="header_left">
             <img class="icon" src="icons/cutlery.png" alt=""><b class="flying_pizzas_header">Flying Pizzas</b>
         </div>
@@ -20,6 +20,14 @@
 
     <div class="outerContainer">
         <div class="foodContainer">
+
+            <a href="#shoppingBasket"> <!-- Jump to responsive basket -->
+                <div class="button_basket" id="button_basket">Warenkorb: 0,00 €</div>
+            </a>
+            <a href="#header"> <!-- Scroll up to header (responsive basket) -->
+                <div><img class="img_delete" src="icons/x-mark-48.png"></div>
+            </a>
+
             <img class="broadImage" src="images/mainImage.jpeg" alt="">
             <div class="retaurant_upper">
                 <b class="flying_pizzas">Flying Pizzas</b>

@@ -58,6 +58,11 @@ function render_basket_empty() {
         <p class="text1_basket_empty">Fülle deinen Warenkorb</p>
         <p class="text2_basket_empty">Füge leckere Gerichte aus der Speisekarte hinzu und bestelle dein Essen.</p>
     `;
+
+    let basketSum_responvive = document.getElementById('button_basket');
+    basketSum_responvive.innerHTML = `<div>
+    </div>Warenkorb: 0,00 €</div>
+    </div>`;
 }
 
 // filled basked
@@ -71,7 +76,7 @@ function render_basket_filled() {
             let price = basket_prices[i];
                 formatedPrice = price.toFixed(2).replace('.', ',');
             let amount = basket_amounts[i];
-            foods_within_basket = document.getElementById('all_foods_within_basket');
+            let foods_within_basket = document.getElementById('all_foods_within_basket');
             foods_within_basket.innerHTML += generateHTML_foodWithinBasket(amount,food,formatedPrice,i);
     }
     
@@ -83,6 +88,11 @@ function render_basket_filled() {
         formatedTotal = total.toFixed(2).replace('.', ',');
     } 
     basket.innerHTML += generateHTML_sumArea(formatedSum,formatedTotal);
+
+    let basketSum_responvive = document.getElementById('button_basket');
+    basketSum_responvive.innerHTML = `<div>
+    </div>Warenkorb: ${formatedSum} €</div>
+    </div>`;
 }
 
 
@@ -117,21 +127,6 @@ function remove_from_basket(food) {
         render_basket_filled();
         }
 }
-
-/* function remove_from_basket(food) {
-    if (basket_amounts[i] == 1 && basket_foods.length == 1) {
-        render_basket_empty();
-    }
-    else if (basket_amounts[i] == 1) {
-        basket_foods.splice(i, 1);
-        basket_prices.splice(i, 1);
-        basket_amounts.splice(i, 1);
-        render_basket_filled();
-    } else {
-        basket_amounts[i]--;
-        render_basket_filled();
-    }
-} */
 
 
 //// templates

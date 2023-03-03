@@ -134,6 +134,14 @@ footer {
     .shoppingBasket {
         width: 50%;
     }
+
+    .button_basket {
+        display: flex;
+    }
+
+    .img_delete {
+        display: flex;
+    }
 }
 
 @media (max-width: 500px) {
